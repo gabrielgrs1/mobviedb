@@ -1,13 +1,11 @@
 package com.gabrielgrs.moviedb.presentation.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.gabrielgrs.moviedb.R
+import com.gabrielgrs.moviedb.core.plataform.BaseActivity
 
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class MainActivity : BaseActivity() {
+    override fun init() {
         setContentView(R.layout.activity_main)
+        // TODO Add primary fragment
     }
 }
