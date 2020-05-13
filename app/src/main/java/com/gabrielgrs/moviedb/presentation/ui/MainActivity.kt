@@ -1,7 +1,8 @@
-package com.gabrielgrs.moviedb
+package com.gabrielgrs.moviedb.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gabrielgrs.moviedb.R
 
 class MainActivity : AppCompatActivity() {
 
