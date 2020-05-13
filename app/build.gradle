@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 HashMap<String, String> testDependencies = rootProject.ext.testDependencies
 HashMap<String, String> networkDependencies = rootProject.ext.networkDependencies
@@ -26,6 +27,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "THEMOVIEDB_API_KEY", THEMOVIEDB_API_KEY)
+
+        dataBinding {
+            enabled = true
+        }
     }
 
     buildTypes {
@@ -49,6 +55,7 @@ dependencies {
     implementation viewDependencies.lifecycle
     implementation viewDependencies.constraintLayout
     implementation viewDependencies.recyclerView
+    implementation viewDependencies.sneaker
     implementation viewDependencies.glide
     annotationProcessor viewDependencies.glideCompiler
 
