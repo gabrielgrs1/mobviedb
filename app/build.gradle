@@ -11,6 +11,10 @@ HashMap<String, String> dependencyInjectionDependencies = rootProject.ext.depend
 HashMap<String, String> rxDependencies = rootProject.ext.rxDependencies
 
 android {
+    dataBinding {
+        enabled = true
+    }
+
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
@@ -27,11 +31,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "THEMOVIEDB_API_KEY", THEMOVIEDB_API_KEY)
-
-        dataBinding {
-            enabled = true
-        }
     }
 
     buildTypes {
@@ -51,17 +50,21 @@ dependencies {
     implementation otherDependencies.coreKtx
 
     // View Dependencies
+    kapt viewDependencies.lifecycleCompiler
     implementation viewDependencies.appcompat
     implementation viewDependencies.lifecycle
     implementation viewDependencies.constraintLayout
     implementation viewDependencies.recyclerView
     implementation viewDependencies.sneaker
+    implementation viewDependencies.cardView
+    implementation viewDependencies.legacySupport
     implementation viewDependencies.glide
     annotationProcessor viewDependencies.glideCompiler
 
     // Test Dependencies
     testImplementation testDependencies.junit
     testImplementation testDependencies.mockk
+    testImplementation testDependencies.koin
     androidTestImplementation testDependencies.junitExt
     androidTestImplementation testDependencies.espresso
 
@@ -70,13 +73,15 @@ dependencies {
     implementation networkDependencies.okhttpLoggingInterceptor
     implementation networkDependencies.retrofit
     implementation networkDependencies.retrofitConverterGson
+    implementation networkDependencies.retrofitRxAdapter
     implementation networkDependencies.gson
 
     // Dependency Injection Dependencies
     implementation dependencyInjectionDependencies.koin
+    implementation dependencyInjectionDependencies.koinCore
+    implementation dependencyInjectionDependencies.koinViewModel
 
     // Rx Dependencies
     implementation rxDependencies.rxJava
     implementation rxDependencies.rxAndroid
-
 }
