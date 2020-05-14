@@ -58,6 +58,7 @@ dependencies {
     implementation viewDependencies.sneaker
     implementation viewDependencies.cardView
     implementation viewDependencies.legacySupport
+    implementation viewDependencies.material
     implementation viewDependencies.glide
     annotationProcessor viewDependencies.glideCompiler
 
