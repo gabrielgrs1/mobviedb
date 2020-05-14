@@ -2,7 +2,7 @@ package com.gabrielgrs.moviedb.data.api.service
 
 import com.gabrielgrs.moviedb.data.api.model.response.movie.MoviesResponse
 import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.MovieDetailResponse
-import com.gabrielgrs.moviedb.data.api.model.response.similarmovies.SimilarMovieResponse
+import com.gabrielgrs.moviedb.data.api.model.response.searchmovies.SearchMoviesResponse
 import com.gabrielgrs.moviedb.data.api.model.response.similarmovies.SimilarMoviesResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -19,7 +19,7 @@ interface IApiService {
     fun searchMovies(
         @Query("query") query: String,
         @Query("page") page: Int
-    ): Observable<MoviesResponse>
+    ): Observable<SearchMoviesResponse>
 
     @GET("movie/{movie_id}")
     fun getMovieDetails(

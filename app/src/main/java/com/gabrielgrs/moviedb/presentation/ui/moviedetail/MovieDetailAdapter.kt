@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.gabrielgrs.moviedb.R
 import com.gabrielgrs.moviedb.core.util.Constants
 import com.gabrielgrs.moviedb.presentation.model.similarmovies.SimilarMovie
-import kotlinx.android.synthetic.main.item_popular_movie.view.itemPopularMovieBannerMovieIv
 import kotlinx.android.synthetic.main.item_similar_movie.view.itemSimilarMovieBannerMovieIv
 import kotlinx.android.synthetic.main.item_similar_movie.view.itemSimilarMovieTitleTv
 

@@ -1,13 +1,14 @@
-package com.gabrielgrs.moviedb.presentation.mapper.popularmovies
+package com.gabrielgrs.moviedb.data.mapper.searchmovies
 
 import com.gabrielgrs.moviedb.core.plataform.BaseMapper
-import com.gabrielgrs.moviedb.domain.model.movie.PopularMovieModel
-import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovie
+import com.gabrielgrs.moviedb.data.api.model.response.searchmovies.SearchMovieResponse
+import com.gabrielgrs.moviedb.domain.model.searchmovies.SearchMovieModel
+import java.text.SimpleDateFormat
+import java.util.Date
 
-object PopularMovieMapper :
-    BaseMapper<PopularMovieModel, PopularMovie>() {
+object SearchMovieMapper : BaseMapper<SearchMovieResponse, SearchMovieModel>() {
 
-    override fun transformFrom(s: PopularMovie): PopularMovieModel = PopularMovieModel(
+    override fun transformFrom(s: SearchMovieModel): SearchMovieResponse = SearchMovieResponse(
         popularity = s.popularity,
         adult = s.adult,
         backdropPath = s.backdropPath,
@@ -17,14 +18,14 @@ object PopularMovieMapper :
         originalTitle = s.originalTitle,
         overview = s.overview,
         posterPath = s.posterPath,
-        releaseDate = s.releaseDate,
+        releaseDate = SimpleDateFormat("dd-MM-yyy").format(s.releaseDate),
         title = s.title,
         video = s.video,
         voteAverage = s.voteAverage,
         voteCount = s.voteCount
     )
 
-    override fun transformTo(s: PopularMovieModel): PopularMovie = PopularMovie(
+    override fun transformTo(s: SearchMovieResponse): SearchMovieModel = SearchMovieModel(
         popularity = s.popularity,
         adult = s.adult,
         backdropPath = s.backdropPath,
@@ -34,10 +35,19 @@ object PopularMovieMapper :
         originalTitle = s.originalTitle,
         overview = s.overview,
         posterPath = s.posterPath,
-        releaseDate = s.releaseDate,
+        releaseDate = getDate(s.releaseDate),
         title = s.title,
         video = s.video,
         voteAverage = s.voteAverage,
         voteCount = s.voteCount
     )
+
+    private fun getDate(releaseDate: String): Date {
+        var date = Date()
+        if (releaseDate.isNotEmpty()) {
+            date = SimpleDateFormat("dd-MM-yyy").parse(releaseDate)
+        }
+        return date
+
+    }
 }

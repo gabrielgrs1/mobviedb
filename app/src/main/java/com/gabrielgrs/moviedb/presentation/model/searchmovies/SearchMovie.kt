@@ -1,8 +1,8 @@
-package com.gabrielgrs.moviedb.presentation.model.popularmovies
+package com.gabrielgrs.moviedb.presentation.model.searchmovies
 
 import java.util.Date
 
-data class PopularMovie(
+data class SearchMovie(
     var posterPath: String?,
     var overview: String,
     var adult: Boolean,

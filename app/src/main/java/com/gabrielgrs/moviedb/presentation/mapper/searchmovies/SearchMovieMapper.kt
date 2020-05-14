@@ -1,13 +1,12 @@
-package com.gabrielgrs.moviedb.presentation.mapper.popularmovies
+package com.gabrielgrs.moviedb.presentation.mapper.searchmovies
 
 import com.gabrielgrs.moviedb.core.plataform.BaseMapper
-import com.gabrielgrs.moviedb.domain.model.movie.PopularMovieModel
-import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovie
+import com.gabrielgrs.moviedb.domain.model.searchmovies.SearchMovieModel
+import com.gabrielgrs.moviedb.presentation.model.searchmovies.SearchMovie
 
-object PopularMovieMapper :
-    BaseMapper<PopularMovieModel, PopularMovie>() {
+object SearchMovieMapper : BaseMapper<SearchMovieModel, SearchMovie>() {
 
-    override fun transformFrom(s: PopularMovie): PopularMovieModel = PopularMovieModel(
+    override fun transformFrom(s: SearchMovie): SearchMovieModel = SearchMovieModel(
         popularity = s.popularity,
         adult = s.adult,
         backdropPath = s.backdropPath,
@@ -24,7 +23,7 @@ object PopularMovieMapper :
         voteCount = s.voteCount
     )
 
-    override fun transformTo(s: PopularMovieModel): PopularMovie = PopularMovie(
+    override fun transformTo(s: SearchMovieModel): SearchMovie = SearchMovie(
         popularity = s.popularity,
         adult = s.adult,
         backdropPath = s.backdropPath,

@@ -1,7 +1,6 @@
 package com.gabrielgrs.moviedb.presentation.mapper.moviedetail
 
 import com.gabrielgrs.moviedb.core.plataform.BaseMapper
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.MovieDetailResponse
 import com.gabrielgrs.moviedb.domain.model.moviedetail.MovieDetailModel
 import com.gabrielgrs.moviedb.presentation.model.moviedetail.MovieDetail
 
