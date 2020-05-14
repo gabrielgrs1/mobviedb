@@ -7,9 +7,11 @@ import com.gabrielgrs.moviedb.domain.requestvalues.PopularMoviesRequestValues
 import com.gabrielgrs.moviedb.presentation.mapper.PopularMoviesMapper
 import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovies
 import io.reactivex.Observable
+import org.koin.standalone.inject
 
-open class PopularMoviesUseCase(private val moviesRepository: MoviesRepository) :
-    BaseUseCase<PopularMoviesRequestValues, PopularMovies>() {
+open class PopularMoviesUseCase : BaseUseCase<PopularMoviesRequestValues, PopularMovies>() {
+
+    private val moviesRepository: MoviesRepository by inject()
 
     override fun executeUseCase(requestValues: PopularMoviesRequestValues?): Observable<PopularMovies> {
         requestValues?.let {

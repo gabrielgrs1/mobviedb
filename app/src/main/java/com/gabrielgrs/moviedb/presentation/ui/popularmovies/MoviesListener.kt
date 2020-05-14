@@ -1,5 +1,5 @@
 package com.gabrielgrs.moviedb.presentation.ui.popularmovies
 
-interface MovieClickListener {
+interface MoviesListener {
     fun onClickMovie(movieId: Int)
 }

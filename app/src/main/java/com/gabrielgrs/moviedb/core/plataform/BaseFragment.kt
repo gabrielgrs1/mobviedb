@@ -25,10 +25,13 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getContentLayoutId(), container, false)
-        init()
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+    }
     protected fun handleError(error: Throwable) {
         error.message?.let {
             Log.e(tag, it)

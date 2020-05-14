@@ -9,10 +9,11 @@ import com.gabrielgrs.moviedb.core.util.UseCaseHandler
 import com.gabrielgrs.moviedb.domain.requestvalues.PopularMoviesRequestValues
 import com.gabrielgrs.moviedb.domain.usecase.PopularMoviesUseCase
 import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovies
+import org.koin.standalone.inject
 
-class PopularMoviesViewModel(private val popularMoviesUseCase: PopularMoviesUseCase) :
-    BaseViewModel() {
+class PopularMoviesViewModel : BaseViewModel() {
 
+    private val popularMoviesUseCase: PopularMoviesUseCase by inject()
     val moviesListResponse: MutableLiveData<Either<Throwable, PopularMovies>> = MutableLiveData()
 
     fun getPopularMovies(page: Int) {

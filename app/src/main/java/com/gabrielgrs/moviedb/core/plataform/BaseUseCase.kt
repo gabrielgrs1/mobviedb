@@ -1,8 +1,9 @@
 package com.gabrielgrs.moviedb.core.plataform
 
 import io.reactivex.Observable
+import org.koin.standalone.KoinComponent
 
-abstract class BaseUseCase<in RV : BaseRequestValues, T> {
+abstract class BaseUseCase<in RV : BaseRequestValues, T> : KoinComponent{
     private var requestValue: RV? = null
 
     fun setRequestValues(requestValues: RV?) {

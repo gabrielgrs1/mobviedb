@@ -7,8 +7,12 @@ import com.gabrielgrs.moviedb.domain.model.movie.PopularMoviesModel
 import com.gabrielgrs.moviedb.domain.model.moviedetail.MovieDetailModel
 import com.gabrielgrs.moviedb.domain.repository.MoviesRepository
 import io.reactivex.Observable
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 
-class MoviesRepositoryImpl(private val iApiService: IApiService) : MoviesRepository {
+class MoviesRepositoryImpl : MoviesRepository, KoinComponent {
+    private val iApiService: IApiService by inject()
+
     override fun getPopularMovies(page: Int): Observable<PopularMoviesModel> =
         iApiService.getPopularMovies(page)
             .map { response -> PopularMoviesMapper.transformTo(response) }

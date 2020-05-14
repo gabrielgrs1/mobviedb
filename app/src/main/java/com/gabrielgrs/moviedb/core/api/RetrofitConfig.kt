@@ -10,7 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
@@ -29,7 +29,7 @@ fun provideRetrofit(): Retrofit {
 
     retrofit = Retrofit.Builder()
         .baseUrl(THE_MOVIE_DB_BASE_URL)
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(client.build())
         .build()
@@ -38,7 +38,7 @@ fun provideRetrofit(): Retrofit {
 }
 
 private fun addLoggingInterceptor(client: OkHttpClient.Builder) {
-    client.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+    client.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
 }
 
 private fun addQueryParameters(client: OkHttpClient.Builder) {
@@ -47,7 +47,6 @@ private fun addQueryParameters(client: OkHttpClient.Builder) {
         override fun intercept(chain: Interceptor.Chain): Response {
             val url = chain.request().url.newBuilder()
                 .addQueryParameter(Constants.API_KEY_QUERY, API_KEY)
-                .addQueryParameter(Constants.DEVICE_LANGUAGE_QUERY, Constants.DEVICE_LANGUAGE)
                 .build()
 
             val request = chain.request().newBuilder().url(url).build()

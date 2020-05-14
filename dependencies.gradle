@@ -38,7 +38,7 @@ ext {
             okhttp                  : "com.squareup.okhttp3:okhttp:$Okhttp",
             retrofit                : "com.squareup.retrofit2:retrofit:$Retrofit",
             retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:$Retrofit",
-            retrofitRxAdapter       : "com.squareup.retrofit2:adapter-rxjava:$Retrofit",
+            retrofitRxAdapter       : "com.squareup.retrofit2:adapter-rxjava2:$Retrofit",
             gson                    : "com.google.code.gson:gson:$Gson",
             okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$LoginInterceptor"
     ]

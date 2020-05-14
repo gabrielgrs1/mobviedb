@@ -2,8 +2,9 @@ package com.gabrielgrs.moviedb.core.plataform
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
+import org.koin.standalone.KoinComponent
 
-open class BaseViewModel : ViewModel() {
+open class BaseViewModel : ViewModel(), KoinComponent {
 
     protected val compositeDisposable = CompositeDisposable()
     override fun onCleared() {

@@ -1,21 +1,28 @@
 package com.gabrielgrs.moviedb.presentation.ui.popularmovies
 
+import androidx.annotation.NonNull
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.gabrielgrs.moviedb.R
 import com.gabrielgrs.moviedb.core.plataform.BaseFragment
 import com.gabrielgrs.moviedb.core.plataform.fold
 import com.gabrielgrs.moviedb.databinding.FragmentPopularMoviesBinding
+import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovie
 import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovies
 import kotlinx.android.synthetic.main.fragment_popular_movies.popularMoviesListMoviesRv
+import kotlinx.android.synthetic.main.fragment_popular_movies.popularMoviesRefreshSrl
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PopularMoviesFragment : BaseFragment<FragmentPopularMoviesBinding>(), MovieClickListener {
+class PopularMoviesFragment : BaseFragment<FragmentPopularMoviesBinding>(), MoviesListener,
+    SwipeRefreshLayout.OnRefreshListener {
 
     private val popularMoviesViewModel: PopularMoviesViewModel by viewModel()
     private lateinit var adapter: PopularMoviesAdapter
     private lateinit var movies: PopularMovies
-    private var page: Int = 0
+    private var page: Int = 1
+    private val completeMovieList: MutableList<PopularMovie> = mutableListOf()
 
     companion object {
         fun newInstance() =
@@ -24,16 +31,45 @@ class PopularMoviesFragment : BaseFragment<FragmentPopularMoviesBinding>(), Movi
 
     override fun getContentLayoutId(): Int = R.layout.fragment_popular_movies
 
+    override fun onClickMovie(movieId: Int) {
+        TODO("Not yet implemented")
+    }
+
     override fun init() {
         initRecyclerView()
         getPopularMovies()
         subscribeLiveData()
+        initSwipeRefreshLayout()
+    }
+
+    private fun initSwipeRefreshLayout() {
+        popularMoviesRefreshSrl.setOnRefreshListener(this)
+    }
+
+    override fun onRefresh() {
+        page = 1
+        getPopularMovies()
     }
 
     private fun initRecyclerView() {
         adapter = PopularMoviesAdapter(listener = this)
         popularMoviesListMoviesRv.layoutManager = GridLayoutManager(requireContext(), 3)
         popularMoviesListMoviesRv.adapter = adapter
+        initScrollChangeListener()
+    }
+
+    private fun initScrollChangeListener() {
+        popularMoviesListMoviesRv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(@NonNull recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    if (page < movies.totalPages) {
+                        page++
+                        getPopularMovies()
+                    }
+                }
+            }
+        })
     }
 
     private fun getPopularMovies() {
@@ -48,13 +84,18 @@ class PopularMoviesFragment : BaseFragment<FragmentPopularMoviesBinding>(), Movi
 
     private fun handleSuccess(response: PopularMovies) {
         movies = response
-        adapter.setMovieList(movies.results)
+
+        if (movies.page == 1) {
+            completeMovieList.clear()
+        }
+
+        completeMovieList.addAll(movies.results)
+
+        if (popularMoviesRefreshSrl.isRefreshing) {
+            popularMoviesRefreshSrl.isRefreshing = false
+        }
+
+        adapter.setMovieList(completeMovieList)
         page = movies.page
     }
-
-    override fun onClickMovie(movieId: Int) {
-        TODO("Not yet implemented")
-    }
 }
-// TODO Implementar refresh layout
-// TODO Implementar observer do scroll da tela

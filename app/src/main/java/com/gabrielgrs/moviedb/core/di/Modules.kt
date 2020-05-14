@@ -3,6 +3,7 @@ package com.gabrielgrs.moviedb.core.di
 import com.gabrielgrs.moviedb.core.api.provideMoviesApi
 import com.gabrielgrs.moviedb.core.api.provideRetrofit
 import com.gabrielgrs.moviedb.data.api.repository.MoviesRepositoryImpl
+import com.gabrielgrs.moviedb.domain.repository.MoviesRepository
 import com.gabrielgrs.moviedb.domain.usecase.PopularMoviesUseCase
 import com.gabrielgrs.moviedb.presentation.ui.popularmovies.PopularMoviesFragment
 import com.gabrielgrs.moviedb.presentation.ui.popularmovies.PopularMoviesViewModel
@@ -14,11 +15,11 @@ val fragmentModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { PopularMoviesViewModel(get()) }
+    viewModel { PopularMoviesViewModel() }
 }
 
 val repositoryModule = module {
-    factory { MoviesRepositoryImpl(get()) }
+    single<MoviesRepository> { MoviesRepositoryImpl() }
 }
 
 val networkModule = module {
@@ -27,5 +28,5 @@ val networkModule = module {
 }
 
 val useCaseModule = module {
-    factory { PopularMoviesUseCase(get()) }
+    factory { PopularMoviesUseCase() }
 }
