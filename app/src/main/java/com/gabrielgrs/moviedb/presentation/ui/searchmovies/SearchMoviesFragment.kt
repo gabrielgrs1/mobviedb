@@ -39,7 +39,7 @@ class SearchMoviesFragment : BaseFragment<FragmentSearchMoviesBinding>(), Movies
     override fun onClickMovie(movieId: Int) {
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(
-                R.id.mainContent,
+                R.id.mainContentFl,
                 MovieDetailFragment.newInstance(movieId),
                 MovieDetailFragment::class.simpleName
             )

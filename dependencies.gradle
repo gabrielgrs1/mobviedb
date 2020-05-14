@@ -20,6 +20,7 @@ ext {
     Glide = '4.11.0'
     CardView = '1.0.0'
     LegacySupport = '1.0.0'
+    Material = '1.1.0'
 
     Koin = '1.0.1'
 
@@ -53,7 +54,8 @@ ext {
             legacySupport    : "androidx.legacy:legacy-support-v4:$LegacySupport",
             sneaker          : "com.irozon.sneaker:sneaker:$Sneaker",
             glide            : "com.github.bumptech.glide:glide:$Glide",
-            glideCompiler    : "com.github.bumptech.glide:compiler:$Glide"
+            glideCompiler    : "com.github.bumptech.glide:compiler:$Glide",
+            material    : "com.google.android.material:material:$Material"
     ]
 
     otherDependencies = [
