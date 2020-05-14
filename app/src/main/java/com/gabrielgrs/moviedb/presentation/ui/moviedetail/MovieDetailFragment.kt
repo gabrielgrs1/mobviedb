@@ -83,20 +83,23 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
     }
 
     private fun handleDetailSuccess(response: MovieDetail) {
-        initTextDetails(response)
+        initMovieDetails(response)
     }
 
     private fun handleSimilarMovies(response: SimilarMovies) {
         adapter.setMovieList(response.results)
     }
 
-    private fun initTextDetails(response: MovieDetail) {
+    private fun initMovieDetails(response: MovieDetail) {
         movieDetailTitleTv.text = response.title
         movieDetailWebsiteTv.text = response.homepage
+        movieDetailOverViewTv.text = response.overview
         setCompanies(response)
         setReleaseDate(response)
-        movieDetailOverViewTv.text = response.overview
+        setMovieBackbanner(response)
+    }
 
+    private fun setMovieBackbanner(response: MovieDetail) {
         val imageUrl = Constants.THE_MOVIE_DB_IMAGE_URL + response.backdropPath
         Glide.with(requireContext())
             .load(imageUrl)
