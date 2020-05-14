@@ -4,8 +4,8 @@ import com.gabrielgrs.moviedb.core.plataform.BaseUseCase
 import com.gabrielgrs.moviedb.domain.exception.RequestValuesNotImplementedException
 import com.gabrielgrs.moviedb.domain.repository.MoviesRepository
 import com.gabrielgrs.moviedb.domain.requestvalues.PopularMoviesRequestValues
-import com.gabrielgrs.moviedb.presentation.mapper.PopularMoviesMapper
-import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovies
+import com.gabrielgrs.moviedb.presentation.mapper.popularmovies.PopularMoviesMapper
+import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovies
 import io.reactivex.Observable
 import org.koin.standalone.inject
 

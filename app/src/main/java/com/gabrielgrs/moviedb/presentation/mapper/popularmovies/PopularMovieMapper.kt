@@ -1,8 +1,8 @@
-package com.gabrielgrs.moviedb.presentation.mapper
+package com.gabrielgrs.moviedb.presentation.mapper.popularmovies
 
 import com.gabrielgrs.moviedb.core.plataform.BaseMapper
 import com.gabrielgrs.moviedb.domain.model.movie.PopularMovieModel
-import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovie
+import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovie
 
 object PopularMovieMapper :
     BaseMapper<PopularMovieModel, PopularMovie>() {

@@ -1,4 +1,4 @@
-package com.gabrielgrs.moviedb.domain.model.moviedetail
+package com.gabrielgrs.moviedb.presentation.model.moviedetail
 
 import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.Genre
 import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.ProductionCompanies
@@ -6,7 +6,7 @@ import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.ProductionCoun
 import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.SpokenLanguages
 import java.util.Date
 
-class MovieDetailModel(
+class MovieDetail(
     val adult: Boolean,
     val budget: Int,
     val homepage: String?,

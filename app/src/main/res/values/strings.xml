@@ -5,7 +5,8 @@
     <string name="generic_server_down">Serviços temporariamente indisponíveis.</string>
     <string name="generic_error_toast">Erro</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tagline">tagline</string>
+    <string name="overview">overview</string>
+    <string name="similar_show">Others</string>
 
 </resources>

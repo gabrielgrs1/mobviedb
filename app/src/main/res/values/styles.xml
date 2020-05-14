@@ -26,7 +26,7 @@
     <style name="DetailField" parent="android:Widget.TextView">
         <item name="android:gravity">center_vertical</item>
         <item name="android:lineSpacingExtra">6dp</item>
-        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:textColor">@color/lightGray</item>
     </style>
 
     <style name="HeaderTextView" parent="android:Widget.TextView">

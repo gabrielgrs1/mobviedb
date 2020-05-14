@@ -46,6 +46,5 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
             .setTitle(getString(R.string.generic_error_toast))
             .setMessage(message)
             .sneakError()
-
     }
 }
