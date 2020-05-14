@@ -9,11 +9,13 @@ import com.gabrielgrs.moviedb.R
 import com.gabrielgrs.moviedb.core.plataform.BaseFragment
 import com.gabrielgrs.moviedb.core.plataform.fold
 import com.gabrielgrs.moviedb.databinding.FragmentPopularMoviesBinding
-import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovie
-import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovies
+import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovie
+import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovies
+import com.gabrielgrs.moviedb.presentation.ui.moviedetail.MovieDetailFragment
 import kotlinx.android.synthetic.main.fragment_popular_movies.popularMoviesListMoviesRv
 import kotlinx.android.synthetic.main.fragment_popular_movies.popularMoviesRefreshSrl
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class PopularMoviesFragment : BaseFragment<FragmentPopularMoviesBinding>(), MoviesListener,
     SwipeRefreshLayout.OnRefreshListener {
@@ -25,14 +27,20 @@ class PopularMoviesFragment : BaseFragment<FragmentPopularMoviesBinding>(), Movi
     private val completeMovieList: MutableList<PopularMovie> = mutableListOf()
 
     companion object {
-        fun newInstance() =
-            PopularMoviesFragment()
+        fun newInstance() = PopularMoviesFragment()
     }
 
     override fun getContentLayoutId(): Int = R.layout.fragment_popular_movies
 
     override fun onClickMovie(movieId: Int) {
-        TODO("Not yet implemented")
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(
+                R.id.mainContent,
+                MovieDetailFragment.newInstance(movieId),
+                MovieDetailFragment::class.simpleName
+            )
+            ?.addToBackStack(null)
+            ?.commit()
     }
 
     override fun init() {

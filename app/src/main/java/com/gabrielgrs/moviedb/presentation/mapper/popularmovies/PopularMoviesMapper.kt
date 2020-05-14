@@ -1,8 +1,8 @@
-package com.gabrielgrs.moviedb.presentation.mapper
+package com.gabrielgrs.moviedb.presentation.mapper.popularmovies
 
 import com.gabrielgrs.moviedb.core.plataform.BaseMapper
 import com.gabrielgrs.moviedb.domain.model.movie.PopularMoviesModel
-import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovies
+import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovies
 
 object PopularMoviesMapper : BaseMapper<PopularMoviesModel, PopularMovies>() {
     override fun transformFrom(s: PopularMovies): PopularMoviesModel =

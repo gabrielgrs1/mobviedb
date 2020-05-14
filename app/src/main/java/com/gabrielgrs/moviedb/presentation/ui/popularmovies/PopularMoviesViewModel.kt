@@ -8,7 +8,7 @@ import com.gabrielgrs.moviedb.core.plataform.Either
 import com.gabrielgrs.moviedb.core.util.UseCaseHandler
 import com.gabrielgrs.moviedb.domain.requestvalues.PopularMoviesRequestValues
 import com.gabrielgrs.moviedb.domain.usecase.PopularMoviesUseCase
-import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovies
+import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovies
 import org.koin.standalone.inject
 
 class PopularMoviesViewModel : BaseViewModel() {

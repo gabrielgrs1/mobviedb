@@ -1,4 +1,4 @@
-package com.gabrielgrs.moviedb.presentation.model.movie
+package com.gabrielgrs.moviedb.presentation.model.popularmovies
 
 class PopularMovies(
     val page: Int,

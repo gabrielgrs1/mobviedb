@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gabrielgrs.moviedb.R
 import com.gabrielgrs.moviedb.core.util.Constants
-import com.gabrielgrs.moviedb.presentation.model.movie.PopularMovie
+import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovie
 import kotlinx.android.synthetic.main.item_popular_movie.view.itemPopularMovieBannerMovieIv
 import kotlinx.android.synthetic.main.item_popular_movie.view.itemPopularMovieTextRatingTv
 import kotlinx.android.synthetic.main.item_popular_movie.view.itemPopularMovieTitleTv
@@ -35,7 +35,9 @@ class PopularMoviesAdapter(
         movie?.let { holder.bindView(it) }
 
         holder.itemView.setOnClickListener {
-            movie?.id?.let { it1 -> listener.onClickMovie(it1) }
+            if (movie != null) {
+                listener.onClickMovie(movie._id)
+            }
         }
     }
 
@@ -52,7 +54,7 @@ class PopularMoviesAdapter(
             val imageUrl = Constants.THE_MOVIE_DB_IMAGE_URL + popularMovie._posterPath
             Glide.with(itemView.context)
                 .load(imageUrl)
-                .thumbnail(0.1f)
+                .thumbnail(0.05f)
                 .into(itemView.itemPopularMovieBannerMovieIv)
         }
     }

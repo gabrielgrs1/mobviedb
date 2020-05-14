@@ -2,6 +2,8 @@ package com.gabrielgrs.moviedb.data.api.service
 
 import com.gabrielgrs.moviedb.data.api.model.response.movie.MoviesResponse
 import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.MovieDetailResponse
+import com.gabrielgrs.moviedb.data.api.model.response.similarmovies.SimilarMovieResponse
+import com.gabrielgrs.moviedb.data.api.model.response.similarmovies.SimilarMoviesResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -27,6 +29,6 @@ interface IApiService {
     @GET("movie/{movie_id}/similar")
     fun getSimilarMovies(
         @Path("movie_id") movieId: Int
-    ): Observable<MoviesResponse>
+    ): Observable<SimilarMoviesResponse>
 
 }

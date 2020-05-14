@@ -1,4 +1,4 @@
-package com.gabrielgrs.moviedb.presentation.model.movie
+package com.gabrielgrs.moviedb.presentation.model.popularmovies
 
 import android.widget.ImageView
 import androidx.databinding.BaseObservable
@@ -140,7 +140,7 @@ data class PopularMovie(
     fun loadImage(imageView: ImageView, imageUrl: String) {
         Glide.with(imageView.context)
             .load(imageUrl)
-            .thumbnail(0.3f)
+            .thumbnail(0.05f)
             .into(imageView)
     }
 }

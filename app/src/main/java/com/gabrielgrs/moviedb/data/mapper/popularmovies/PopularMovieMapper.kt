@@ -1,4 +1,4 @@
-package com.gabrielgrs.moviedb.data.mapper
+package com.gabrielgrs.moviedb.data.mapper.popularmovies
 
 import com.gabrielgrs.moviedb.core.plataform.BaseMapper
 import com.gabrielgrs.moviedb.data.api.model.response.movie.MovieResponse
