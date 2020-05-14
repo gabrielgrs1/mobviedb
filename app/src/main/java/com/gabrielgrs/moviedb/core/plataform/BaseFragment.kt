@@ -17,7 +17,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     private lateinit var binding: T
 
     protected abstract fun getContentLayoutId(): Int
-    protected abstract fun initBinding()
+    protected abstract fun init()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,10 +25,13 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getContentLayoutId(), container, false)
-        initBinding()
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+    }
     protected fun handleError(error: Throwable) {
         error.message?.let {
             Log.e(tag, it)

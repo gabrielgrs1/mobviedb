@@ -18,6 +18,8 @@ ext {
     LifeCycle = '1.1.1'
     Sneaker = '2.0.0'
     Glide = '4.11.0'
+    CardView = '1.0.0'
+    LegacySupport = '1.0.0'
 
     Koin = '1.0.1'
 
@@ -28,27 +30,31 @@ ext {
             junit   : "junit:junit:$jUnit",
             espresso: "androidx.test.espresso:espresso-core:$EspressoCore",
             junitExt: "androidx.test.ext:junit:$jUnitExt",
-            mockk   : "io.mockk:mockk:$Mockk"
+            mockk   : "io.mockk:mockk:$Mockk",
+            koin    : "org.koin:koin-test:$Koin"
     ]
 
     networkDependencies = [
             okhttp                  : "com.squareup.okhttp3:okhttp:$Okhttp",
             retrofit                : "com.squareup.retrofit2:retrofit:$Retrofit",
             retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:$Retrofit",
+            retrofitRxAdapter       : "com.squareup.retrofit2:adapter-rxjava2:$Retrofit",
             gson                    : "com.google.code.gson:gson:$Gson",
             okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$LoginInterceptor"
     ]
 
     viewDependencies = [
-            appcompat       : "androidx.appcompat:appcompat:$AppCompat",
-            constraintLayout: "androidx.constraintlayout:constraintlayout:$ConstraintLayout",
-            recyclerView    : "androidx.recyclerview:recyclerview:$RecyclerView",
-            lifecycle       : "android.arch.lifecycle:extensions:$LifeCycle",
-            sneaker         : "com.irozon.sneaker:sneaker:$Sneaker",
-            glide           : "com.github.bumptech.glide:glide:$Glide",
-            glideCompiler   : "com.github.bumptech.glide:compiler:$Glide"
+            appcompat        : "androidx.appcompat:appcompat:$AppCompat",
+            constraintLayout : "androidx.constraintlayout:constraintlayout:$ConstraintLayout",
+            recyclerView     : "androidx.recyclerview:recyclerview:$RecyclerView",
+            lifecycle        : "android.arch.lifecycle:extensions:$LifeCycle",
+            lifecycleCompiler: "android.arch.lifecycle:compiler:$LifeCycle",
+            cardView         : "androidx.cardview:cardview:$CardView",
+            legacySupport    : "androidx.legacy:legacy-support-v4:$LegacySupport",
+            sneaker          : "com.irozon.sneaker:sneaker:$Sneaker",
+            glide            : "com.github.bumptech.glide:glide:$Glide",
+            glideCompiler    : "com.github.bumptech.glide:compiler:$Glide"
     ]
-
 
     otherDependencies = [
             kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KotlinVersion",
@@ -56,7 +62,9 @@ ext {
     ]
 
     dependencyInjectionDependencies = [
-            koin: "org.koin:koin-android:$Koin"
+            koin         : "org.koin:koin-android:$Koin",
+            koinCore     : "org.koin:koin-core:$Koin",
+            koinViewModel: "org.koin:koin-androidx-viewmodel:$Koin"
     ]
 
     rxDependencies = [

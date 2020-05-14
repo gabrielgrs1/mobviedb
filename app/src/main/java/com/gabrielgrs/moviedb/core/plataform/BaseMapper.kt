@@ -2,9 +2,9 @@ package com.gabrielgrs.moviedb.core.plataform
 
 abstract class BaseMapper<T, K> {
 
-    abstract fun transformFrom(source: K): T
+    abstract fun transformFrom(s: K): T
 
-    abstract fun transformTo(source: T): K
+    abstract fun transformTo(s: T): K
 
     fun transformFromList(source: List<K>): List<T> {
         return source.map { src -> transformFrom(src) }
