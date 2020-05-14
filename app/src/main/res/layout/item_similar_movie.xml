@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
+    <data />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/itemSimilarMovieCardView"
@@ -38,13 +35,13 @@
                 android:id="@+id/itemSimilarMovieTitleTv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                android:textAlignment="center"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
+                android:layout_marginBottom="6dp"
+                android:singleLine="true"
+                android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmallInverse"
                 android:textColor="@android:color/white"
-                android:singleLine="true"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent"

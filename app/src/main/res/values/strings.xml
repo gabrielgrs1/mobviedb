@@ -8,5 +8,6 @@
     <string name="tagline">tagline</string>
     <string name="overview">overview</string>
     <string name="similar_show">Others</string>
+    <string name="search_movie">Buscar filme</string>
 
 </resources>

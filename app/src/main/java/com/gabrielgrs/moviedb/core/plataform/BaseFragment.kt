@@ -32,9 +32,10 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         init()
     }
+
     protected fun handleError(error: Throwable) {
         error.message?.let {
-            Log.e(tag, it)
+            Log.e("ERROR_SERVICE", it)
         }
 
         val message: String = when (error) {

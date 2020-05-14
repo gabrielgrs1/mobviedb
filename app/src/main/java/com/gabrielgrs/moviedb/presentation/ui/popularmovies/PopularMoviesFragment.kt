@@ -11,11 +11,11 @@ import com.gabrielgrs.moviedb.core.plataform.fold
 import com.gabrielgrs.moviedb.databinding.FragmentPopularMoviesBinding
 import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovie
 import com.gabrielgrs.moviedb.presentation.model.popularmovies.PopularMovies
+import com.gabrielgrs.moviedb.presentation.ui.common.MoviesListener
 import com.gabrielgrs.moviedb.presentation.ui.moviedetail.MovieDetailFragment
 import kotlinx.android.synthetic.main.fragment_popular_movies.popularMoviesListMoviesRv
 import kotlinx.android.synthetic.main.fragment_popular_movies.popularMoviesRefreshSrl
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class PopularMoviesFragment : BaseFragment<FragmentPopularMoviesBinding>(), MoviesListener,
     SwipeRefreshLayout.OnRefreshListener {

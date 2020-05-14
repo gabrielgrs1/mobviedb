@@ -4,9 +4,11 @@ import com.gabrielgrs.moviedb.core.api.ErrorResponseHandler.handleApiCallErrors
 import com.gabrielgrs.moviedb.data.api.service.IApiService
 import com.gabrielgrs.moviedb.data.mapper.moviedetail.MovieDetailMapper
 import com.gabrielgrs.moviedb.data.mapper.popularmovies.PopularMoviesMapper
+import com.gabrielgrs.moviedb.data.mapper.searchmovies.SearchMoviesMapper
 import com.gabrielgrs.moviedb.data.mapper.similarmovie.SimilarMoviesMapper
 import com.gabrielgrs.moviedb.domain.model.movie.PopularMoviesModel
 import com.gabrielgrs.moviedb.domain.model.moviedetail.MovieDetailModel
+import com.gabrielgrs.moviedb.domain.model.searchmovies.SearchMoviesModel
 import com.gabrielgrs.moviedb.domain.model.similarmovie.SimilarMoviesModel
 import com.gabrielgrs.moviedb.domain.repository.MoviesRepository
 import io.reactivex.Observable
@@ -21,9 +23,10 @@ class MoviesRepositoryImpl : MoviesRepository, KoinComponent {
             .map { response -> PopularMoviesMapper.transformTo(response) }
             .onErrorResumeNext(handleApiCallErrors())
 
-    override fun searchMovies(query: String, page: Int): Observable<PopularMoviesModel> {
-        TODO("Not yet implemented")
-    }
+    override fun searchMovies(query: String, page: Int): Observable<SearchMoviesModel> =
+        iApiService.searchMovies(query, page)
+            .map { response -> SearchMoviesMapper.transformTo(response) }
+            .onErrorResumeNext(handleApiCallErrors())
 
     override fun getSimilarMovies(movieId: Int): Observable<SimilarMoviesModel> =
         iApiService.getSimilarMovies(movieId)

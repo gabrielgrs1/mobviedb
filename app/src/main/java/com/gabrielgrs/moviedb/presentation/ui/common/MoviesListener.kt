@@ -1,4 +1,4 @@
-package com.gabrielgrs.moviedb.presentation.ui.popularmovies
+package com.gabrielgrs.moviedb.presentation.ui.common
 
 interface MoviesListener {
     fun onClickMovie(movieId: Int)
