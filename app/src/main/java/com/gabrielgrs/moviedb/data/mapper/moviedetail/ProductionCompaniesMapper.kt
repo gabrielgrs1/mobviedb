@@ -11,7 +11,7 @@ object ProductionCompaniesMapper :
             id = s.id,
             name = s.name,
             logoPath = s.logoPath,
-            originalCountry = s.originalCountry
+            originCountry = s.originalCountry
         )
 
     override fun transformTo(s: ProductionCompaniesResponse): ProductionCompaniesModel =
@@ -19,6 +19,6 @@ object ProductionCompaniesMapper :
             id = s.id,
             name = s.name,
             logoPath = s.logoPath,
-            originalCountry = s.originalCountry
+            originalCountry = s.originCountry
         )
 }

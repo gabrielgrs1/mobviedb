@@ -79,7 +79,8 @@ ext {
 
     rxDependencies = [
             rxJava   : "io.reactivex.rxjava2:rxjava:$RxJava",
-            rxAndroid: "io.reactivex.rxjava2:rxandroid:$RxAndroid"
+            rxAndroid: "io.reactivex.rxjava2:rxandroid:$RxAndroid",
+            rxRoom: "androidx.room:room-rxjava2:$Room"
     ]
 
 }

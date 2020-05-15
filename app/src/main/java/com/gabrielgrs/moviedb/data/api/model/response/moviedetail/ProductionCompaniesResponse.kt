@@ -7,5 +7,5 @@ data class ProductionCompaniesResponse(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("logo_path") val logoPath: String?,
-    @SerializedName("original_country") val originalCountry: String
+    @SerializedName("origin_country") val originCountry: String
 ) : Serializable

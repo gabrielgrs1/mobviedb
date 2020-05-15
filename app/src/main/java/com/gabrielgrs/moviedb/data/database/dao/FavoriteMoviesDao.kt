@@ -6,14 +6,15 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.gabrielgrs.moviedb.data.database.entity.MovieEntity
+import io.reactivex.Observable
 
 @Dao
 interface FavoriteMoviesDao {
 
-    @Query("SELECT * from favorite_movies WHERE id = :movieId")
-    fun getFavoriteMovie(movieId: Int): MovieEntity
+    @Query("SELECT * FROM favorite_movies WHERE id = :movieId")
+    fun getFavoriteMovie(movieId: Int): Observable<List<MovieEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addToFavorites(movie: MovieEntity)
 
     @Delete

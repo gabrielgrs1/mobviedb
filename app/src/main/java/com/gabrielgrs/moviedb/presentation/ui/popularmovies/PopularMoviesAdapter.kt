@@ -59,7 +59,7 @@ class PopularMoviesAdapter(
                 val imageUrl = Constants.THE_MOVIE_DB_IMAGE_URL + posterPath
                 Glide.with(itemView.context)
                     .load(imageUrl)
-                    .thumbnail(0.05f)
+                    .thumbnail(0.02f)
                     .into(itemView.itemPopularMovieBannerMovieIv)
             }
         }

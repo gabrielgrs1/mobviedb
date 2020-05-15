@@ -1,5 +1,6 @@
 package com.gabrielgrs.moviedb.data.database.repository
 
+import android.annotation.SuppressLint
 import com.gabrielgrs.moviedb.data.database.dao.FavoriteMoviesDao
 import com.gabrielgrs.moviedb.data.database.entity.MovieEntity
 import com.gabrielgrs.moviedb.domain.repository.FavoriteMoviesRepository
@@ -9,35 +10,27 @@ import io.reactivex.schedulers.Schedulers
 
 class FavoriteMoviesRepositoryImpl(private val favoriteMoviesDao: FavoriteMoviesDao) :
     FavoriteMoviesRepository {
-    override fun isMovieFavorite(movieId: Int): Boolean {
-        var isFavorite = false
+    @SuppressLint("CheckResult")
+    override fun isMovieFavorite(movieId: Int): Observable<List<MovieEntity>> =
+        favoriteMoviesDao.getFavoriteMovie(movieId)
 
-        Observable.fromCallable {
-            favoriteMoviesDao.getFavoriteMovie(movieId)
-        }.doOnNext { movie ->
-            isFavorite = movie != null
-        }.subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
 
-        return isFavorite
-    }
-
-    override fun toggleMovieFavorite(movieId: Int) {
-        val isFavorite = isMovieFavorite(movieId)
-
-        if (isFavorite) {
+    @SuppressLint("CheckResult")
+    override fun toggleMovieFavorite(movieId: Int, favorite: Boolean): Observable<Boolean> {
+        return if (favorite) {
             Observable.fromCallable {
                 favoriteMoviesDao.removeFavorite(MovieEntity(movieId))
             }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
+            Observable.just(false)
         } else {
             Observable.fromCallable {
                 favoriteMoviesDao.addToFavorites(MovieEntity(movieId))
             }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
+            Observable.just(true)
         }
     }
 }

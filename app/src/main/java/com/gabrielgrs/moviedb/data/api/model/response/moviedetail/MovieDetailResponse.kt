@@ -10,7 +10,6 @@ data class MovieDetailResponse(
     @SerializedName("poster_path") val posterPath: String? = "",
     @SerializedName("overview") val overview: String? = "",
     @SerializedName("release_date") val releaseDate: Date,
-    @SerializedName("genre") val genre: List<GenreResponse>? = listOf(),
     @SerializedName("id") val id: Int,
     @SerializedName("imdb_id") val imdbId: String? = "",
     @SerializedName("original_title") val originalTitle: String,

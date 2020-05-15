@@ -9,7 +9,6 @@ class MovieDetailModel(
     val posterPath: String?,
     val overview: String?,
     val releaseDate: Date,
-    val genre: List<GenreModel>?,
     val id: Int,
     val imdbId: String?,
     val originalTitle: String,

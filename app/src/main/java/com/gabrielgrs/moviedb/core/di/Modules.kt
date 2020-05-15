@@ -6,7 +6,10 @@ import com.gabrielgrs.moviedb.core.api.provideRetrofit
 import com.gabrielgrs.moviedb.data.api.repository.MoviesRepositoryImpl
 import com.gabrielgrs.moviedb.data.database.MovieDbRoomDatabase
 import com.gabrielgrs.moviedb.data.database.repository.FavoriteMoviesRepositoryImpl
+import com.gabrielgrs.moviedb.domain.repository.FavoriteMoviesRepository
 import com.gabrielgrs.moviedb.domain.repository.MoviesRepository
+import com.gabrielgrs.moviedb.domain.usecase.FavoriteMoviesUseCase
+import com.gabrielgrs.moviedb.domain.usecase.IsFavoriteMoviesUseCase
 import com.gabrielgrs.moviedb.domain.usecase.MovieDetailUseCase
 import com.gabrielgrs.moviedb.domain.usecase.PopularMoviesUseCase
 import com.gabrielgrs.moviedb.domain.usecase.SearchMoviesUseCase
@@ -36,19 +39,22 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single<MoviesRepository> { MoviesRepositoryImpl() }
-    bean { FavoriteMoviesRepositoryImpl(get()) }
+    single<FavoriteMoviesRepository> { FavoriteMoviesRepositoryImpl(get()) }
 }
 
 val daoModule = module {
-    bean { get<MovieDbRoomDatabase>().favoriteMoviesDao() }
+    single { get<MovieDbRoomDatabase>().favoriteMoviesDao() }
 }
 
 val persistenceModule = module {
     factory { provideMoviesApi(get()) }
     single { provideRetrofit() }
-    bean {
-        Room.databaseBuilder(androidApplication(), MovieDbRoomDatabase::class.java, "favorite_movies_database")
-            .build()
+    single {
+        Room.databaseBuilder(
+            androidApplication(),
+            MovieDbRoomDatabase::class.java,
+            "favorite_movies_database"
+        ).build()
     }
 }
 
@@ -57,4 +63,6 @@ val useCaseModule = module {
     factory { MovieDetailUseCase() }
     factory { SimilarMoviesUseCase() }
     factory { SearchMoviesUseCase() }
+    factory { FavoriteMoviesUseCase() }
+    factory { IsFavoriteMoviesUseCase() }
 }

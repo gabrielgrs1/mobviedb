@@ -44,7 +44,7 @@ class MovieDetailAdapter(private var movieList: List<SimilarMovie>? = null) :
             val imageUrl = Constants.THE_MOVIE_DB_IMAGE_URL + similarMovie.posterPath
             Glide.with(itemView.context)
                 .load(imageUrl)
-                .thumbnail(0.05f)
+                .thumbnail(0.02f)
                 .into(itemView.itemSimilarMovieBannerMovieIv)
         }
     }

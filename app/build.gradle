@@ -65,7 +65,7 @@ dependencies {
     implementation viewDependencies.legacySupport
     implementation viewDependencies.material
     implementation viewDependencies.glide
-    annotationProcessor viewDependencies.glideCompiler
+    kapt viewDependencies.glideCompiler
 
     // Test Dependencies
     testImplementation testDependencies.junit
@@ -95,4 +95,8 @@ dependencies {
     // Rx Dependencies
     implementation rxDependencies.rxJava
     implementation rxDependencies.rxAndroid
+    implementation rxDependencies.rxRoom
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+
+
 }
