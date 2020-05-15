@@ -27,12 +27,15 @@ ext {
     RxJava = '2.2.6'
     RxAndroid = '2.1.1'
 
+    Room = '2.2.5'
+
     testDependencies = [
             junit   : "junit:junit:$jUnit",
             espresso: "androidx.test.espresso:espresso-core:$EspressoCore",
             junitExt: "androidx.test.ext:junit:$jUnitExt",
             mockk   : "io.mockk:mockk:$Mockk",
-            koin    : "org.koin:koin-test:$Koin"
+            koin    : "org.koin:koin-test:$Koin",
+            room    : "androidx.room:room-testing:$Room"
     ]
 
     networkDependencies = [
@@ -55,7 +58,7 @@ ext {
             sneaker          : "com.irozon.sneaker:sneaker:$Sneaker",
             glide            : "com.github.bumptech.glide:glide:$Glide",
             glideCompiler    : "com.github.bumptech.glide:compiler:$Glide",
-            material    : "com.google.android.material:material:$Material"
+            material         : "com.google.android.material:material:$Material"
     ]
 
     otherDependencies = [
@@ -69,9 +72,15 @@ ext {
             koinViewModel: "org.koin:koin-androidx-viewmodel:$Koin"
     ]
 
+    persistenceDependencies = [
+            roomRuntime : "androidx.room:room-runtime:$Room",
+            roomCompiler: "androidx.room:room-compiler:$Room"
+    ]
+
     rxDependencies = [
             rxJava   : "io.reactivex.rxjava2:rxjava:$RxJava",
-            rxAndroid: "io.reactivex.rxjava2:rxandroid:$RxAndroid"
+            rxAndroid: "io.reactivex.rxjava2:rxandroid:$RxAndroid",
+            rxRoom: "androidx.room:room-rxjava2:$Room"
     ]
 
 }

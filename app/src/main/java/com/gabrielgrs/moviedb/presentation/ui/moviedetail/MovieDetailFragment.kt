@@ -9,11 +9,14 @@ import com.gabrielgrs.moviedb.R
 import com.gabrielgrs.moviedb.core.plataform.BaseFragment
 import com.gabrielgrs.moviedb.core.plataform.fold
 import com.gabrielgrs.moviedb.core.util.Constants
+import com.gabrielgrs.moviedb.data.database.entity.MovieEntity
 import com.gabrielgrs.moviedb.databinding.FragmentMovieDetailBinding
 import com.gabrielgrs.moviedb.presentation.model.moviedetail.MovieDetail
 import com.gabrielgrs.moviedb.presentation.model.similarmovies.SimilarMovies
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailBackPosterIv
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailCompaniesTv
+import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailDetailCardCv
+import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailFavoriteIv
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailOverViewTv
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailSimilarMoviesRv
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailTitleTv
@@ -27,6 +30,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
     private val movieDetailViewModel: MovieDetailViewModel by viewModel()
     private var mMovieId: Int = 0
     private lateinit var adapter: MovieDetailAdapter
+    private var mIsFavorite = false
 
     companion object {
         const val MOVIE_ID_KEY = "MOVIE_ID"
@@ -48,6 +52,11 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         initRecyclerView()
         getMovieDetail()
         getSimilarMovies()
+        initOnClickListener()
+    }
+
+    private fun initOnClickListener() {
+        movieDetailFavoriteIv.setOnClickListener { toggleFavoriteMovie() }
     }
 
     private fun getMovieId() {
@@ -64,6 +73,14 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         movieDetailViewModel.getSimilarMovies(mMovieId)
     }
 
+    private fun getIsFavoriteMovie() {
+        movieDetailViewModel.isMovieFavorite(mMovieId)
+    }
+
+    private fun toggleFavoriteMovie() {
+        movieDetailViewModel.toggleFavoriteMovie(mMovieId, mIsFavorite)
+    }
+
     private fun subscribeLiveData() {
         movieDetailViewModel.movieDetailResponse.observe(this, Observer { response ->
             response?.fold(this::handleError, this::handleDetailSuccess)
@@ -72,8 +89,40 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         movieDetailViewModel.similarMoviesResponse.observe(this, Observer { response ->
             response?.fold(this::handleError, this::handleSimilarMovies)
         })
+
+        movieDetailViewModel.favoriteMovieResponse.observe(this, Observer { response ->
+            response?.fold(this::handleError, this::handleFavoriteMovie)
+        })
+
+        movieDetailViewModel.isFavoriteMovieResponse.observe(this, Observer { response ->
+            response?.fold(this::handleError, this::handleIsFavoriteMovie)
+        })
     }
 
+    private fun handleIsFavoriteMovie(it: List<MovieEntity>) {
+        mIsFavorite = it.isNotEmpty()
+        toggleStar(mIsFavorite)
+    }
+
+    private fun handleFavoriteMovie(it: Boolean) {
+        toggleStar(it)
+    }
+
+    private fun toggleStar(it: Boolean) {
+        if (it) {
+            setFavorite()
+        } else {
+            removeFavorite()
+        }
+    }
+
+    private fun removeFavorite() {
+        movieDetailFavoriteIv.setImageDrawable(resources.getDrawable(R.drawable.ic_star_unmarked))
+    }
+
+    private fun setFavorite() {
+        movieDetailFavoriteIv.setImageDrawable(resources.getDrawable(R.drawable.ic_star_detail))
+    }
 
     private fun initRecyclerView() {
         adapter = MovieDetailAdapter()
@@ -84,6 +133,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
 
     private fun handleDetailSuccess(response: MovieDetail) {
         initMovieDetails(response)
+        getIsFavoriteMovie()
     }
 
     private fun handleSimilarMovies(response: SimilarMovies) {
@@ -103,7 +153,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         val imageUrl = Constants.THE_MOVIE_DB_IMAGE_URL + response.backdropPath
         Glide.with(requireContext())
             .load(imageUrl)
-            .thumbnail(0.05f)
+            .thumbnail(0.02f)
             .into(movieDetailBackPosterIv)
     }
 

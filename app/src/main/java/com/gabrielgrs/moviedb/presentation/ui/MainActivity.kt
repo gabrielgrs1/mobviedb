@@ -13,6 +13,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         startFragment(PopularMoviesFragment.newInstance())
         mainBottomBarBnv.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
     }
 
     private val mOnNavigationItemSelectedListener =

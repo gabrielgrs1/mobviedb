@@ -5,9 +5,7 @@
     <string name="generic_server_down">Serviços temporariamente indisponíveis.</string>
     <string name="generic_error_toast">Erro</string>
 
-    <string name="tagline">tagline</string>
-    <string name="overview">overview</string>
-    <string name="similar_show">Others</string>
+    <string name="overview">Resumo</string>
     <string name="search_movie">Buscar filme</string>
 
 </resources>
