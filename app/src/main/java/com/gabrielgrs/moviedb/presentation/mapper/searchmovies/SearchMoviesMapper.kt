@@ -19,5 +19,4 @@ object SearchMoviesMapper : BaseMapper<SearchMoviesModel, SearchMovies>() {
         results = s.results.map { SearchMovieMapper.transformTo(it) },
         totalResults = s.totalResults
     )
-
 }

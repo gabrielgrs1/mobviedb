@@ -21,5 +21,4 @@ object SimilarMoviesMapper : BaseMapper<SimilarMoviesModel, SimilarMovies>() {
             results = s.results.map { SimilarMovieMapper.transformTo(it) },
             totalResults = s.totalResults
         )
-
 }

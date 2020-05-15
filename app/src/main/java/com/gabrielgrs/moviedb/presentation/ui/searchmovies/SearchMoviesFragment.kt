@@ -20,7 +20,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Timer
 import java.util.TimerTask
 
-
 class SearchMoviesFragment : BaseFragment<FragmentSearchMoviesBinding>(), MoviesListener {
 
     private val mSearchMoviesViewModel: SearchMoviesViewModel by viewModel()

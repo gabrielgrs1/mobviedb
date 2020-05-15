@@ -4,9 +4,9 @@
     <item
         android:id="@+id/navigation_popular"
         android:icon="@drawable/ic_movies"
-        android:title="Filmes" />
+        android:title="@string/movies_menu" />
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/ic_search"
-        android:title="Buscar" />
+        android:title="@string/search_menu" />
 </menu>

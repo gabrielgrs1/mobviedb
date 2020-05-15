@@ -20,5 +20,4 @@ object PopularMoviesMapper : BaseMapper<PopularMoviesModel, PopularMovies>() {
             results = s.results.map { PopularMovieMapper.transformTo(it) },
             totalResults = s.totalResults
         )
-
 }

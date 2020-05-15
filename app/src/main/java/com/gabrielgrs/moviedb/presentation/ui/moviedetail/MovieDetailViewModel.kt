@@ -27,7 +27,8 @@ class MovieDetailViewModel : BaseViewModel() {
     private val isFavoriteMoviesUseCase: IsFavoriteMoviesUseCase by inject()
 
     val movieDetailResponse: MutableLiveData<Either<Throwable, MovieDetail>> = MutableLiveData()
-    val isFavoriteMovieResponse: MutableLiveData<Either<Throwable, List<MovieEntity>>> = MutableLiveData()
+    val isFavoriteMovieResponse: MutableLiveData<Either<Throwable, List<MovieEntity>>> =
+        MutableLiveData()
     val similarMoviesResponse: MutableLiveData<Either<Throwable, SimilarMovies>> = MutableLiveData()
     val favoriteMovieResponse: MutableLiveData<Either<Throwable, Boolean>> = MutableLiveData()
 
@@ -70,5 +71,4 @@ class MovieDetailViewModel : BaseViewModel() {
     companion object {
         private const val TAG = "MOVIE_DETAIL_VM"
     }
-
 }

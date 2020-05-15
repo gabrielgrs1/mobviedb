@@ -3,6 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply from: '../static-analysis/lint.gradle'
+apply from: '../static-analysis/findbugs.gradle'
+apply from: '../static-analysis/checkstyle.gradle'
+apply from: '../static-analysis/ktlint.gradle'
+apply from: '../static-analysis/detekt.gradle'
+
 HashMap<String, String> testDependencies = rootProject.ext.testDependencies
 HashMap<String, String> networkDependencies = rootProject.ext.networkDependencies
 HashMap<String, String> otherDependencies = rootProject.ext.otherDependencies
@@ -69,7 +75,7 @@ dependencies {
 
     // Test Dependencies
     testImplementation testDependencies.junit
-    testImplementation testDependencies.mockk
+    androidTestImplementation testDependencies.mockk
     testImplementation testDependencies.koin
     androidTestImplementation testDependencies.junitExt
     androidTestImplementation testDependencies.espresso
@@ -91,12 +97,11 @@ dependencies {
     // Persistence Dependencies
     implementation persistenceDependencies.roomRuntime
     kapt persistenceDependencies.roomCompiler
+    debugImplementation persistenceDependencies.dbDebug
 
     // Rx Dependencies
     implementation rxDependencies.rxJava
     implementation rxDependencies.rxAndroid
     implementation rxDependencies.rxRoom
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
-
-
 }
+check.dependsOn 'checkstyle', 'findbugs', 'ktlint', 'detekt'

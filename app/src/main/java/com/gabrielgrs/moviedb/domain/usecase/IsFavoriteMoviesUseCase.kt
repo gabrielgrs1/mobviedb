@@ -8,7 +8,8 @@ import com.gabrielgrs.moviedb.domain.requestvalues.IsFavoriteMoviesRequestValues
 import io.reactivex.Observable
 import org.koin.standalone.inject
 
-open class IsFavoriteMoviesUseCase : BaseUseCase<IsFavoriteMoviesRequestValues, List<MovieEntity>>() {
+open class IsFavoriteMoviesUseCase :
+    BaseUseCase<IsFavoriteMoviesRequestValues, List<MovieEntity>>() {
 
     private val favoriteMoviesRepository: FavoriteMoviesRepository by inject()
 

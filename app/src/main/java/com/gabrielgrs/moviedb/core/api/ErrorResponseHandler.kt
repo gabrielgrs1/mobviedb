@@ -23,7 +23,8 @@ object ErrorResponseHandler {
         )
     }
 
-    private fun <T> whenExceptionThenReplace(vararg pairListException: Pair<Class<*>, Throwable>): Function<Throwable, Observable<T>> {
+    private fun <T> whenExceptionThenReplace(vararg pairListException: Pair<Class<*>, Throwable>):
+            Function<Throwable, Observable<T>> {
         return Function { t: Throwable ->
             for (pair in pairListException) {
                 if (pair.first.isInstance(t))
@@ -32,5 +33,4 @@ object ErrorResponseHandler {
             return@Function Observable.error<T>(t)
         }
     }
-
 }

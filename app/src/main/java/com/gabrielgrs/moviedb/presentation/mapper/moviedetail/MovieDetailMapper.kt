@@ -56,5 +56,4 @@ object MovieDetailMapper : BaseMapper<MovieDetailModel, MovieDetail>() {
         status = s.status,
         tagline = s.tagline
     )
-
 }

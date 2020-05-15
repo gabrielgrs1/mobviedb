@@ -1,5 +1,6 @@
 package com.gabrielgrs.moviedb.data.mapper.searchmovies
 
+import android.annotation.SuppressLint
 import com.gabrielgrs.moviedb.core.plataform.BaseMapper
 import com.gabrielgrs.moviedb.data.api.model.response.searchmovies.SearchMovieResponse
 import com.gabrielgrs.moviedb.domain.model.searchmovies.SearchMovieModel
@@ -8,6 +9,7 @@ import java.util.Date
 
 object SearchMovieMapper : BaseMapper<SearchMovieResponse, SearchMovieModel>() {
 
+    @SuppressLint("SimpleDateFormat")
     override fun transformFrom(s: SearchMovieModel): SearchMovieResponse = SearchMovieResponse(
         popularity = s.popularity,
         adult = s.adult,
@@ -42,12 +44,12 @@ object SearchMovieMapper : BaseMapper<SearchMovieResponse, SearchMovieModel>() {
         voteCount = s.voteCount
     )
 
+    @SuppressLint("SimpleDateFormat")
     private fun getDate(releaseDate: String): Date {
         var date = Date()
         if (releaseDate.isNotEmpty()) {
             date = SimpleDateFormat("dd-MM-yyy").parse(releaseDate)
         }
         return date
-
     }
 }

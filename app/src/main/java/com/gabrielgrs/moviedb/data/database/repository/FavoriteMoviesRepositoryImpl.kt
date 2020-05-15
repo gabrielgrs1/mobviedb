@@ -14,7 +14,6 @@ class FavoriteMoviesRepositoryImpl(private val favoriteMoviesDao: FavoriteMovies
     override fun isMovieFavorite(movieId: Int): Observable<List<MovieEntity>> =
         favoriteMoviesDao.getFavoriteMovie(movieId)
 
-
     @SuppressLint("CheckResult")
     override fun toggleMovieFavorite(movieId: Int, favorite: Boolean): Observable<Boolean> {
         return if (favorite) {

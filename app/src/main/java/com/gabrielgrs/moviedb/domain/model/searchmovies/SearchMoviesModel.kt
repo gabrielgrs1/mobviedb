@@ -8,4 +8,3 @@ data class SearchMoviesModel(
     val totalPages: Int,
     val results: List<SearchMovieModel>
 ) : Serializable
-

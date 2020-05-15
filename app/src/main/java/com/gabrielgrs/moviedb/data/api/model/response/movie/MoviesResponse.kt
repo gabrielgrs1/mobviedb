@@ -9,4 +9,3 @@ data class MoviesResponse(
     @SerializedName("total_pages") val totalPages: Int,
     @SerializedName("results") val results: List<MovieResponse>
 ) : Serializable
-

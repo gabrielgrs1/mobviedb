@@ -28,5 +28,4 @@ class SearchMoviesViewModel : BaseViewModel() {
     companion object {
         private const val TAG = "SEARCh_MOVIES_VM"
     }
-
 }

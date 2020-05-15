@@ -1,5 +1,6 @@
 package com.gabrielgrs.moviedb.presentation.ui.moviedetail
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +16,6 @@ import com.gabrielgrs.moviedb.presentation.model.moviedetail.MovieDetail
 import com.gabrielgrs.moviedb.presentation.model.similarmovies.SimilarMovies
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailBackPosterIv
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailCompaniesTv
-import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailDetailCardCv
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailFavoriteIv
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailOverViewTv
 import kotlinx.android.synthetic.main.fragment_movie_detail.movieDetailSimilarMoviesRv
@@ -165,6 +165,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         movieDetailCompaniesTv.text = companies
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun setReleaseDate(response: MovieDetail) {
         val simpleDateFormat = SimpleDateFormat("dd-MM-yyy")
         val releaseDate = simpleDateFormat.format(response.releaseDate)

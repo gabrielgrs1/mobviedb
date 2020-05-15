@@ -13,7 +13,10 @@ open class FavoriteMoviesUseCase : BaseUseCase<FavoriteMoviesRequestValues, Bool
 
     override fun executeUseCase(requestValues: FavoriteMoviesRequestValues?): Observable<Boolean> {
         requestValues?.let {
-            return@executeUseCase favoriteMoviesRepository.toggleMovieFavorite(requestValues.movieId, requestValues.isFavorite)
+            return@executeUseCase favoriteMoviesRepository.toggleMovieFavorite(
+                requestValues.movieId,
+                requestValues.isFavorite
+            )
         }
         return Observable.error(RequestValuesNotImplementedException())
     }

@@ -8,4 +8,3 @@ data class PopularMoviesModel(
     val totalPages: Int,
     val results: List<PopularMovieModel>
 ) : Serializable
-
