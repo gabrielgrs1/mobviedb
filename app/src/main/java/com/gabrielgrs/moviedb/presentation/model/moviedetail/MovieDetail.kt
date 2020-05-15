@@ -1,9 +1,5 @@
 package com.gabrielgrs.moviedb.presentation.model.moviedetail
 
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.Genre
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.ProductionCompanies
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.ProductionCountries
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.SpokenLanguages
 import java.util.Date
 
 class MovieDetail(

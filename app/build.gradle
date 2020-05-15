@@ -9,10 +9,15 @@ HashMap<String, String> otherDependencies = rootProject.ext.otherDependencies
 HashMap<String, String> viewDependencies = rootProject.ext.viewDependencies
 HashMap<String, String> dependencyInjectionDependencies = rootProject.ext.dependencyInjectionDependencies
 HashMap<String, String> rxDependencies = rootProject.ext.rxDependencies
+HashMap<String, String> persistenceDependencies = rootProject.ext.persistenceDependencies
 
 android {
     dataBinding {
         enabled = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
     }
 
     compileSdkVersion 29
@@ -68,6 +73,7 @@ dependencies {
     testImplementation testDependencies.koin
     androidTestImplementation testDependencies.junitExt
     androidTestImplementation testDependencies.espresso
+    androidTestImplementation testDependencies.room
 
     // Network Dependencies
     implementation networkDependencies.okhttp
@@ -81,6 +87,10 @@ dependencies {
     implementation dependencyInjectionDependencies.koin
     implementation dependencyInjectionDependencies.koinCore
     implementation dependencyInjectionDependencies.koinViewModel
+
+    // Persistence Dependencies
+    implementation persistenceDependencies.roomRuntime
+    kapt persistenceDependencies.roomCompiler
 
     // Rx Dependencies
     implementation rxDependencies.rxJava

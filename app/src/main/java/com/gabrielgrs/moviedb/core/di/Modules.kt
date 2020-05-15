@@ -1,8 +1,11 @@
 package com.gabrielgrs.moviedb.core.di
 
+import androidx.room.Room
 import com.gabrielgrs.moviedb.core.api.provideMoviesApi
 import com.gabrielgrs.moviedb.core.api.provideRetrofit
 import com.gabrielgrs.moviedb.data.api.repository.MoviesRepositoryImpl
+import com.gabrielgrs.moviedb.data.database.MovieDbRoomDatabase
+import com.gabrielgrs.moviedb.data.database.repository.FavoriteMoviesRepositoryImpl
 import com.gabrielgrs.moviedb.domain.repository.MoviesRepository
 import com.gabrielgrs.moviedb.domain.usecase.MovieDetailUseCase
 import com.gabrielgrs.moviedb.domain.usecase.PopularMoviesUseCase
@@ -14,6 +17,7 @@ import com.gabrielgrs.moviedb.presentation.ui.popularmovies.PopularMoviesFragmen
 import com.gabrielgrs.moviedb.presentation.ui.popularmovies.PopularMoviesViewModel
 import com.gabrielgrs.moviedb.presentation.ui.searchmovies.SearchMoviesFragment
 import com.gabrielgrs.moviedb.presentation.ui.searchmovies.SearchMoviesViewModel
+import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
@@ -32,11 +36,20 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single<MoviesRepository> { MoviesRepositoryImpl() }
+    bean { FavoriteMoviesRepositoryImpl(get()) }
 }
 
-val networkModule = module {
+val daoModule = module {
+    bean { get<MovieDbRoomDatabase>().favoriteMoviesDao() }
+}
+
+val persistenceModule = module {
     factory { provideMoviesApi(get()) }
     single { provideRetrofit() }
+    bean {
+        Room.databaseBuilder(androidApplication(), MovieDbRoomDatabase::class.java, "movie-db")
+            .build()
+    }
 }
 
 val useCaseModule = module {

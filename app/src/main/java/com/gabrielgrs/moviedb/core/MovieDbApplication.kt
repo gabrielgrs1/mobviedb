@@ -1,8 +1,9 @@
 package com.gabrielgrs.moviedb.core
 
 import android.app.Application
+import com.gabrielgrs.moviedb.core.di.daoModule
 import com.gabrielgrs.moviedb.core.di.fragmentModule
-import com.gabrielgrs.moviedb.core.di.networkModule
+import com.gabrielgrs.moviedb.core.di.persistenceModule
 import com.gabrielgrs.moviedb.core.di.repositoryModule
 import com.gabrielgrs.moviedb.core.di.useCaseModule
 import com.gabrielgrs.moviedb.core.di.viewModelModule
@@ -15,11 +16,12 @@ class MovieDbApplication : Application(), KoinComponent {
         startKoin(
             this,
             listOf(
-                networkModule,
+                persistenceModule,
                 viewModelModule,
                 fragmentModule,
                 repositoryModule,
-                useCaseModule
+                useCaseModule,
+                daoModule
             )
         )
     }

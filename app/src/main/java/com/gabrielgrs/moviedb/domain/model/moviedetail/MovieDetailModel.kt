@@ -1,9 +1,5 @@
 package com.gabrielgrs.moviedb.domain.model.moviedetail
 
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.Genre
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.ProductionCompanies
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.ProductionCountries
-import com.gabrielgrs.moviedb.data.api.model.response.moviedetail.SpokenLanguages
 import java.util.Date
 
 class MovieDetailModel(
@@ -13,7 +9,7 @@ class MovieDetailModel(
     val posterPath: String?,
     val overview: String?,
     val releaseDate: Date,
-    val genre: List<Genre>?,
+    val genre: List<GenreModel>?,
     val id: Int,
     val imdbId: String?,
     val originalTitle: String,
@@ -27,8 +23,8 @@ class MovieDetailModel(
     val runtime: Int?,
     var voteCount: Int,
     val video: Boolean,
-    val productionCompanies: List<ProductionCompanies>,
-    val productionCountries: List<ProductionCountries>,
-    val spokenLanguages: List<SpokenLanguages>,
+    val productionCompanies: List<ProductionCompaniesModel>,
+    val productionCountries: List<ProductionCountriesModel>,
+    val spokenLanguages: List<SpokenLanguagesModel>,
     val voteAverage: Double
 )
