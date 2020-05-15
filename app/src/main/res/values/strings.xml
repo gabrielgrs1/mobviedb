@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">MovieDB</string>
 
-    <string name="generic_network_error">Erro de conexão. Verifique sua internet</string>
     <string name="generic_server_down">Serviços temporariamente indisponíveis.</string>
     <string name="generic_error_toast">Erro</string>
 
     <string name="overview">Resumo</string>
     <string name="search_movie">Buscar filme</string>
+    <string name="similar_movies">Filmes Similares</string>
+    <string name="movies_menu">Filmes</string>
+    <string name="search_menu">Buscar</string>
 
 </resources>

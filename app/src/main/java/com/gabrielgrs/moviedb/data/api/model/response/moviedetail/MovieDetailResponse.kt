@@ -28,4 +28,3 @@ data class MovieDetailResponse(
     @SerializedName("spoken_languages") val spokenLanguage: List<SpokenLanguagesResponse>,
     @SerializedName("vote_average") val voteAverage: Double
 )
-

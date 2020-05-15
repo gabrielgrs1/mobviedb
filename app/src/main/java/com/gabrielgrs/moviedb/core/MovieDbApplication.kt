@@ -2,7 +2,6 @@ package com.gabrielgrs.moviedb.core
 
 import android.app.Application
 import com.gabrielgrs.moviedb.core.di.daoModule
-import com.gabrielgrs.moviedb.core.di.fragmentModule
 import com.gabrielgrs.moviedb.core.di.persistenceModule
 import com.gabrielgrs.moviedb.core.di.repositoryModule
 import com.gabrielgrs.moviedb.core.di.useCaseModule
@@ -18,7 +17,6 @@ class MovieDbApplication : Application(), KoinComponent {
             listOf(
                 persistenceModule,
                 viewModelModule,
-                fragmentModule,
                 repositoryModule,
                 useCaseModule,
                 daoModule

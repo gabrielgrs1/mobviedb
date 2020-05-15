@@ -14,7 +14,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-
 fun provideMoviesApi(retrofit: Retrofit): IApiService = retrofit.create(IApiService::class.java)
 
 fun provideRetrofit(): Retrofit {
@@ -54,4 +53,3 @@ private fun addQueryParameters(client: OkHttpClient.Builder) {
         }
     })
 }
-

@@ -8,4 +8,3 @@ data class SimilarMoviesModel(
     val totalPages: Int,
     val results: List<SimilarMovieModel>
 ) : Serializable
-

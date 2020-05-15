@@ -1,7 +1,6 @@
 package com.gabrielgrs.moviedb.domain.exception
 
 open class GenericException : Exception {
-    constructor(message: String, cause: Throwable) : super(message, cause)
 
     constructor(message: String) : super(message)
 

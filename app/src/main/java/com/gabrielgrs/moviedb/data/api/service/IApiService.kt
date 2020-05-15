@@ -30,5 +30,4 @@ interface IApiService {
     fun getSimilarMovies(
         @Path("movie_id") movieId: Int
     ): Observable<SimilarMoviesResponse>
-
 }

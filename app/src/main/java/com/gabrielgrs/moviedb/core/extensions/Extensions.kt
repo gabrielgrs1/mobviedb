@@ -12,4 +12,3 @@ fun <T> Observable<T>.subscribeEither(liveData: MutableLiveData<Either<Throwable
         liveData.value = Either.Left(it)
     })
 }
-

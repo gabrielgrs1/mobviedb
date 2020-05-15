@@ -28,5 +28,4 @@ class PopularMoviesViewModel : BaseViewModel() {
     companion object {
         private const val TAG = "POPULAR_MOVIES_VM"
     }
-
 }
