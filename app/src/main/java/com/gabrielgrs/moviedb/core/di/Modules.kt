@@ -47,7 +47,7 @@ val persistenceModule = module {
     factory { provideMoviesApi(get()) }
     single { provideRetrofit() }
     bean {
-        Room.databaseBuilder(androidApplication(), MovieDbRoomDatabase::class.java, "movie-db")
+        Room.databaseBuilder(androidApplication(), MovieDbRoomDatabase::class.java, "favorite_movies_database")
             .build()
     }
 }

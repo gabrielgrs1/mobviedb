@@ -46,8 +46,14 @@ class MovieDetailViewModel : BaseViewModel() {
     fun isMovieFavorite(movieId: Int) {
         Log.d(TAG, "Verify movie at id $movieId is favorite")
 
-        favoriteMoviesRepository.isMovieFavorite(movieId)
+        val movieFavorite = favoriteMoviesRepository.isMovieFavorite(movieId)
 
+        isFavoriteMovieResponse.postValue(movieFavorite)
+    }
+
+    fun toggleFavoriteMovie(movieId: Int) {
+        Log.d(TAG, "Toggle favorite movie at id $movieId")
+        favoriteMoviesRepository.toggleMovieFavorite(movieId)
     }
 
     companion object {

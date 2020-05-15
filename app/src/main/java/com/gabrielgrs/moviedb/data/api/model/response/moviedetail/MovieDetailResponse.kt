@@ -10,7 +10,7 @@ data class MovieDetailResponse(
     @SerializedName("poster_path") val posterPath: String? = "",
     @SerializedName("overview") val overview: String? = "",
     @SerializedName("release_date") val releaseDate: Date,
-    @SerializedName("genre") val genreResponse: List<GenreResponse>? = listOf(),
+    @SerializedName("genre") val genre: List<GenreResponse>? = listOf(),
     @SerializedName("id") val id: Int,
     @SerializedName("imdb_id") val imdbId: String? = "",
     @SerializedName("original_title") val originalTitle: String,
@@ -24,9 +24,9 @@ data class MovieDetailResponse(
     @SerializedName("runtime") val runtime: Int? = 0,
     @SerializedName("vote_count") var voteCount: Int,
     @SerializedName("video") val video: Boolean,
-    @SerializedName("production_companies") val productionCompanyResponses: List<ProductionCompaniesResponse>,
-    @SerializedName("production_countries") val productionCountryResponses: List<ProductionCountriesResponse>,
-    @SerializedName("spoken_languages") val spokenLanguageResponses: List<SpokenLanguagesResponse>,
+    @SerializedName("production_companies") val productionCompany: List<ProductionCompaniesResponse>,
+    @SerializedName("production_countries") val productionCountry: List<ProductionCountriesResponse>,
+    @SerializedName("spoken_languages") val spokenLanguage: List<SpokenLanguagesResponse>,
     @SerializedName("vote_average") val voteAverage: Double
 )
 
